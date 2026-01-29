@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-simply-white text-deep-blue;
+}
+
+.bg-simply-white {
+  background-color: #FFFFFF;
+}
