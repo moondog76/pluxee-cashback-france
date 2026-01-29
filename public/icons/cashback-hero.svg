@@ -1,0 +1,9 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="56" fill="#FFDC37"/>
+  <path d="M35 35L52 52M52 68L35 85M68 52L85 35M68 68L85 85" stroke="#221C46" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="16" fill="#FFDC37" stroke="#221C46" stroke-width="3"/>
+  <text x="60" y="66" text-anchor="middle" fill="#221C46" font-family="system-ui, sans-serif" font-size="18" font-weight="bold">€</text>
+  <circle cx="85" cy="28" r="8" fill="#FFDC37" stroke="#221C46" stroke-width="2"/>
+  <circle cx="32" cy="88" r="6" fill="#FFDC37" stroke="#221C46" stroke-width="2"/>
+  <path d="M88 25V31M85 28H91" stroke="#221C46" stroke-width="2" stroke-linecap="round"/>
+</svg>

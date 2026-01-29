@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HeroBanner() {
   return (
@@ -13,9 +14,7 @@ export default function HeroBanner() {
           </p>
         </div>
         <div className="flex items-center">
-          <div className="w-20 h-20 bg-very-yellow rounded-full flex items-center justify-center text-4xl">
-            🐷
-          </div>
+          <Image src="/icons/cashback-hero.svg" alt="Cashback" width={80} height={80} />
           <ChevronRight className="w-6 h-6 text-deep-blue ml-2" />
         </div>
       </div>
