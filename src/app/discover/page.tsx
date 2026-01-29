@@ -15,11 +15,13 @@ export default function DiscoverPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [nearMeActive, setNearMeActive] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lon: number } | null>(null);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
   const handleNearMeClick = () => {
-    if (!nearMeActive) {
+    if (!nearMeActive && !isLoadingLocation) {
       // Request user location
       if ('geolocation' in navigator) {
+        setIsLoadingLocation(true);
         navigator.geolocation.getCurrentPosition(
           (position) => {
             setUserLocation({
@@ -27,17 +29,21 @@ export default function DiscoverPage() {
               lon: position.coords.longitude,
             });
             setNearMeActive(true);
+            setIsLoadingLocation(false);
           },
           (error) => {
             console.error('Error getting location:', error);
             alert('Unable to get your location. Please enable location services.');
+            setNearMeActive(false);
+            setIsLoadingLocation(false);
           }
         );
       } else {
         alert('Geolocation is not supported by your browser.');
       }
-    } else {
+    } else if (nearMeActive) {
       setNearMeActive(false);
+      setUserLocation(null);
     }
   };
 
@@ -65,10 +71,10 @@ export default function DiscoverPage() {
       .map((item) => item.merchant);
   }
 
-  const filteredOffers = offers.filter((offer) => {
-    const merchant = merchants.find((m) => m.id === offer.merchantId);
-    return merchant && filteredMerchants.includes(merchant);
-  });
+  // Create offers from filtered merchants, maintaining sort order
+  const filteredOffers = filteredMerchants.flatMap((merchant) =>
+    offers.filter((offer) => offer.merchantId === merchant.id)
+  );
 
   return (
     <PageContainer>
@@ -76,7 +82,11 @@ export default function DiscoverPage() {
         <h1 className="text-2xl font-bold text-deep-blue mb-4">Discover</h1>
 
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
-        <FilterPills nearMeActive={nearMeActive} onNearMeClick={handleNearMeClick} />
+        <FilterPills
+          nearMeActive={nearMeActive}
+          isLoading={isLoadingLocation}
+          onNearMeClick={handleNearMeClick}
+        />
 
         {searchQuery || nearMeActive ? (
           <div>
