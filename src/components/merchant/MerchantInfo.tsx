@@ -26,7 +26,7 @@ export default function MerchantInfo({ merchant }: MerchantInfoProps) {
       <div className="flex items-start justify-between mb-4">
         <h1 className="text-2xl font-bold text-deep-blue">{merchant.name}</h1>
         <div className="bg-ultra-green rounded-lg px-4 py-3 text-center ml-4">
-          <div className="text-xs text-deep-blue font-medium">Gagnez</div>
+          <div className="text-xs text-deep-blue font-medium">Earn</div>
           <div className="text-2xl font-bold text-deep-blue">{merchant.cashbackPercent}%</div>
         </div>
       </div>
@@ -41,24 +41,24 @@ export default function MerchantInfo({ merchant }: MerchantInfoProps) {
 
       <div className="bg-gray-50 rounded-lg p-4 mb-6">
         <div className="flex items-start gap-2 mb-3">
-          <span className="text-sm font-medium text-deep-blue">Achat minimum:</span>
+          <span className="text-sm font-medium text-deep-blue">Minimum purchase:</span>
           <span className="text-sm text-gray-600">
             {merchant.minPurchase} {merchant.currency}
           </span>
         </div>
         <div className="flex items-start gap-2">
-          <span className="text-sm font-medium text-deep-blue">Disponibilité:</span>
+          <span className="text-sm font-medium text-deep-blue">Availability:</span>
           <span className="text-sm text-gray-600">{merchant.availability}</span>
         </div>
       </div>
 
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-deep-blue mb-3">À propos de {merchant.name}</h2>
+        <h2 className="text-lg font-semibold text-deep-blue mb-3">About {merchant.name}</h2>
         <p className="text-gray-700">{merchant.about}</p>
       </div>
 
       <Button variant="primary" size="lg" className="w-full">
-        Activer l&apos;offre
+        Activate Offer
       </Button>
     </div>
   );

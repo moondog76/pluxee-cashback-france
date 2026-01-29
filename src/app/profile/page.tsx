@@ -4,28 +4,28 @@ import { ChevronRight } from 'lucide-react';
 
 const settingsGroups = [
   {
-    title: 'Paramètres',
+    title: 'Settings',
     items: [
       { label: 'Notifications', href: '/profile/notifications' },
-      { label: 'E-mail & Communication', href: '/profile/email' },
+      { label: 'Email & Communication', href: '/profile/email' },
       { label: 'IBAN', href: '/profile/iban' },
     ],
   },
   {
     title: 'Pluxee',
     items: [
-      { label: 'À propos de Pluxee', href: '#' },
+      { label: 'About Pluxee', href: '#' },
       { label: 'Support & FAQ', href: '#' },
-      { label: 'Conditions d\'utilisation', href: '#' },
-      { label: 'Politique de confidentialité', href: '#' },
+      { label: 'Terms of Use', href: '#' },
+      { label: 'Privacy Policy', href: '#' },
     ],
   },
   {
-    title: 'Compte',
+    title: 'Account',
     items: [
-      { label: 'Exporter vos données', href: '#' },
-      { label: 'Supprimer votre compte', href: '#', danger: true },
-      { label: 'Déconnexion', href: '#' },
+      { label: 'Export Your Data', href: '#' },
+      { label: 'Delete Your Account', href: '#', danger: true },
+      { label: 'Log Out', href: '#' },
     ],
   },
 ];
@@ -34,14 +34,14 @@ export default function ProfilePage() {
   return (
     <PageContainer>
       <div className="p-4">
-        <h1 className="text-2xl font-bold text-deep-blue mb-6">Profil</h1>
+        <h1 className="text-2xl font-bold text-deep-blue mb-6">Profile</h1>
 
         <div className="bg-ultra-green/10 rounded-xl p-4 mb-6 text-center">
           <div className="w-20 h-20 bg-ultra-green rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-deep-blue">
             U
           </div>
-          <h2 className="text-lg font-semibold text-deep-blue">Utilisateur</h2>
-          <p className="text-sm text-gray-600">user@pluxee.fr</p>
+          <h2 className="text-lg font-semibold text-deep-blue">User</h2>
+          <p className="text-sm text-gray-600">user@pluxee.com</p>
         </div>
 
         {settingsGroups.map((group, groupIndex) => (

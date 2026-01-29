@@ -12,16 +12,16 @@ export default function CashbackPage() {
           <div className="text-8xl mb-6">🔭</div>
 
           <h2 className="text-xl font-bold text-deep-blue mb-3">
-            Pas encore de cashback !
+            No cashback yet!
           </h2>
 
           <p className="text-center text-gray-600 mb-8 max-w-sm">
-            Dépensez pour gagner ! Plus d&apos;achats, plus d&apos;économies.
+            Spend to earn! More shopping, more savings.
           </p>
 
           <Link href="/discover">
             <Button variant="primary" size="lg">
-              Découvrir où dépenser
+              Discover Where to Spend
             </Button>
           </Link>
         </div>

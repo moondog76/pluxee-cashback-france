@@ -8,7 +8,7 @@ export default function DiscoverPage() {
   return (
     <PageContainer>
       <div className="p-4">
-        <h1 className="text-2xl font-bold text-deep-blue mb-4">Découvrir</h1>
+        <h1 className="text-2xl font-bold text-deep-blue mb-4">Discover</h1>
 
         <SearchBar />
         <FilterPills />

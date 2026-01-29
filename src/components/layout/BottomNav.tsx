@@ -5,10 +5,10 @@ import { usePathname } from 'next/navigation';
 import { Home, Search, Receipt, User } from 'lucide-react';
 
 const navItems = [
-  { href: '/', label: 'Accueil', icon: Home },
-  { href: '/discover', label: 'Découvrir', icon: Search },
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/discover', label: 'Discover', icon: Search },
   { href: '/cashback', label: 'Cashback', icon: Receipt },
-  { href: '/profile', label: 'Profil', icon: User },
+  { href: '/profile', label: 'Profile', icon: User },
 ];
 
 export default function BottomNav() {

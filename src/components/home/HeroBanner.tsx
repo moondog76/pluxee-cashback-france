@@ -6,10 +6,10 @@ export default function HeroBanner() {
       <div className="flex justify-between items-center">
         <div className="flex-1">
           <h2 className="text-2xl font-bold text-deep-blue mb-2">
-            Commencez à gagner aujourd&apos;hui !
+            Start Earning Today!
           </h2>
           <p className="text-deep-blue text-sm">
-            Dépensez pour gagner, plus d&apos;achats, plus d&apos;économies.
+            Spend to earn, more shopping, more savings.
           </p>
         </div>
         <div className="flex items-center">

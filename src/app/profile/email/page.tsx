@@ -6,15 +6,15 @@ import Button from '@/components/ui/Button';
 import { useState } from 'react';
 
 export default function EmailPage() {
-  const [email, setEmail] = useState('user@pluxee.fr');
+  const [email, setEmail] = useState('user@pluxee.com');
 
   return (
     <PageContainer>
-      <Header title="E-mail & Communication" showBack backHref="/profile" />
+      <Header title="Email & Communication" showBack backHref="/profile" />
       <div className="p-4">
         <div className="bg-white rounded-xl p-4 mb-4" style={{ boxShadow: '0 2px 8px rgba(34, 28, 70, 0.08)' }}>
           <label htmlFor="email" className="block text-sm font-medium text-deep-blue mb-2">
-            Adresse e-mail
+            Email Address
           </label>
           <input
             id="email"
@@ -22,12 +22,12 @@ export default function EmailPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-ultra-green"
-            placeholder="votre@email.com"
+            placeholder="your@email.com"
           />
         </div>
 
         <Button variant="primary" size="lg" className="w-full">
-          Enregistrer
+          Save
         </Button>
       </div>
     </PageContainer>

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Pluxee Cashback France",
-  description: "Gagnez du cashback sur vos achats quotidiens",
+  description: "Earn cashback on your everyday purchases",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body className={inter.className}>
         {children}
         <BottomNav />

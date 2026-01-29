@@ -16,8 +16,8 @@ export default function NotificationsPage() {
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-white rounded-xl" style={{ boxShadow: '0 2px 8px rgba(34, 28, 70, 0.08)' }}>
             <div>
-              <h3 className="font-semibold text-deep-blue">Notifications push</h3>
-              <p className="text-sm text-gray-600">Recevoir des notifications sur votre appareil</p>
+              <h3 className="font-semibold text-deep-blue">Push Notifications</h3>
+              <p className="text-sm text-gray-600">Receive notifications on your device</p>
             </div>
             <button
               onClick={() => setPushNotifications(!pushNotifications)}
@@ -35,8 +35,8 @@ export default function NotificationsPage() {
 
           <div className="flex items-center justify-between p-4 bg-white rounded-xl" style={{ boxShadow: '0 2px 8px rgba(34, 28, 70, 0.08)' }}>
             <div>
-              <h3 className="font-semibold text-deep-blue">Notifications e-mail</h3>
-              <p className="text-sm text-gray-600">Recevoir des e-mails de Pluxee</p>
+              <h3 className="font-semibold text-deep-blue">Email Notifications</h3>
+              <p className="text-sm text-gray-600">Receive emails from Pluxee</p>
             </div>
             <button
               onClick={() => setEmailNotifications(!emailNotifications)}
@@ -54,8 +54,8 @@ export default function NotificationsPage() {
 
           <div className="flex items-center justify-between p-4 bg-white rounded-xl" style={{ boxShadow: '0 2px 8px rgba(34, 28, 70, 0.08)' }}>
             <div>
-              <h3 className="font-semibold text-deep-blue">Alertes d&apos;offres</h3>
-              <p className="text-sm text-gray-600">Nouveaux marchands et offres spéciales</p>
+              <h3 className="font-semibold text-deep-blue">Offer Alerts</h3>
+              <p className="text-sm text-gray-600">New merchants and special offers</p>
             </div>
             <button
               onClick={() => setOfferAlerts(!offerAlerts)}

@@ -13,12 +13,12 @@ export default function IbanPage() {
       <Header title="IBAN" showBack backHref="/profile" />
       <div className="p-4">
         <p className="text-sm text-gray-600 mb-4">
-          Ajoutez votre IBAN pour recevoir vos remboursements de cashback directement sur votre compte bancaire.
+          Add your IBAN to receive your cashback refunds directly to your bank account.
         </p>
 
         <div className="bg-white rounded-xl p-4 mb-4" style={{ boxShadow: '0 2px 8px rgba(34, 28, 70, 0.08)' }}>
           <label htmlFor="iban" className="block text-sm font-medium text-deep-blue mb-2">
-            Numéro IBAN
+            IBAN Number
           </label>
           <input
             id="iban"
@@ -31,7 +31,7 @@ export default function IbanPage() {
         </div>
 
         <Button variant="primary" size="lg" className="w-full">
-          Ajouter
+          Add
         </Button>
       </div>
     </PageContainer>

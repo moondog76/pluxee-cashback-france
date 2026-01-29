@@ -16,7 +16,7 @@ export default function HomePage() {
         <HeroBanner />
 
         <section className="mb-6">
-          <h2 className="text-lg font-semibold text-deep-blue mb-3">Favoris</h2>
+          <h2 className="text-lg font-semibold text-deep-blue mb-3">Favorites</h2>
           <div className="space-y-3">
             {featuredOffers.slice(0, 2).map((offer) => (
               <OfferCard key={offer.id} merchantId={offer.merchantId} title={offer.title} />
@@ -25,7 +25,7 @@ export default function HomePage() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-lg font-semibold text-deep-blue mb-3">Nouveau pour vous</h2>
+          <h2 className="text-lg font-semibold text-deep-blue mb-3">New For You</h2>
           <div className="space-y-3">
             {newOffers.map((offer) => (
               <OfferCard key={offer.id} merchantId={offer.merchantId} title={offer.title} />
@@ -35,9 +35,9 @@ export default function HomePage() {
 
         <section className="mb-6">
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-lg font-semibold text-deep-blue">Tendances</h2>
+            <h2 className="text-lg font-semibold text-deep-blue">Trending</h2>
             <a href="/discover" className="text-sm text-ultra-green font-medium">
-              Voir tout
+              View All
             </a>
           </div>
           <div className="space-y-3">

@@ -35,7 +35,7 @@ export function FastCashbackPill() {
   return (
     <div className="bg-ultra-green text-deep-blue px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
       <X className="w-3 h-3" />
-      Cashback rapide
+      Fast Cashback
     </div>
   );
 }

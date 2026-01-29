@@ -16,7 +16,7 @@ export default function FilterPills() {
             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
         }`}
       >
-        Tout le cashback
+        All Cashback
       </button>
       <button
         onClick={() => setActiveFilter('fast')}
@@ -26,7 +26,7 @@ export default function FilterPills() {
             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
         }`}
       >
-        Cashback rapide
+        Fast Cashback
       </button>
       <button
         onClick={() => setActiveFilter('location')}
@@ -37,7 +37,7 @@ export default function FilterPills() {
         }`}
       >
         <MapPin className="w-4 h-4" />
-        Près de moi
+        Near Me
       </button>
     </div>
   );
