@@ -33,8 +33,10 @@ export default function OfferCard({ merchantId, title }: OfferCardProps) {
               fill
               className="object-cover"
             />
-            <div className="absolute bottom-1 left-1 w-8 h-8 bg-white rounded flex items-center justify-center text-xs font-bold">
-              {merchant.name.substring(0, 1)}
+            <div className="absolute bottom-1 left-1 bg-white/80 backdrop-blur-sm p-2 rounded-lg">
+              <span className="text-xs font-bold text-deep-blue">
+                {merchant.name.substring(0, 2).toUpperCase()}
+              </span>
             </div>
           </div>
 
@@ -57,8 +59,10 @@ export default function OfferCard({ merchantId, title }: OfferCardProps) {
               </button>
             </div>
 
-            <h3 className="font-bold text-deep-blue text-sm mb-1">{title}</h3>
-            <p className="text-xs text-gray-600 mb-2">{merchant.name}</p>
+            <h3 className="font-bold text-deep-blue text-sm mb-1">{merchant.name}</h3>
+            <p className="text-xs text-gray-500 mb-2">
+              Min. purchase {merchant.minPurchase} {merchant.currency}
+            </p>
 
             <div className="flex items-center gap-2">
               <CashbackBadge percent={merchant.cashbackPercent} />

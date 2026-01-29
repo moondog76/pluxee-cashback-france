@@ -49,10 +49,6 @@ export default function MerchantInfo({ merchant }: MerchantInfoProps) {
         <h2 className="text-lg font-semibold text-deep-blue mb-3">About {merchant.name}</h2>
         <p className="text-gray-700">{merchant.about}</p>
       </div>
-
-      <Button variant="primary" size="lg" className="w-full">
-        Activate Offer
-      </Button>
     </div>
   );
 }
