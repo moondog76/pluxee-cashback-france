@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { merchants } from '@/data/merchants';
-import { CashbackBadge, FastCashbackPill } from '@/components/ui/Badge';
+import { CashbackBadge } from '@/components/ui/Badge';
 import Image from 'next/image';
 
 interface CategorySectionProps {
@@ -35,10 +35,11 @@ export default function CategorySection({ categoryId, categoryName }: CategorySe
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-deep-blue mb-1">{merchant.name}</h4>
-                  <p className="text-xs text-gray-600 mb-2 line-clamp-1">{merchant.description}</p>
+                  <p className="text-xs text-gray-500 mb-2">
+                    Min. purchase {merchant.minPurchase} {merchant.currency}
+                  </p>
                   <div className="flex items-center gap-2">
                     <CashbackBadge percent={merchant.cashbackPercent} />
-                    {merchant.fastCashback && <FastCashbackPill />}
                   </div>
                 </div>
               </div>
