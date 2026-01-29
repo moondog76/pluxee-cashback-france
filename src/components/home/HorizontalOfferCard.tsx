@@ -66,10 +66,7 @@ export default function HorizontalOfferCard({
               {category.name}
             </span>
 
-            <h3 className="font-bold text-deep-blue text-sm mb-1">{merchant.name}</h3>
-            <p className="text-xs text-gray-500 mb-2">
-              Min. purchase {merchant.minPurchase} {merchant.currency}
-            </p>
+            <h3 className="font-bold text-deep-blue text-sm mb-2">{merchant.name}</h3>
 
             <div className="flex items-center justify-between">
               <CashbackBadge percent={merchant.cashbackPercent} />

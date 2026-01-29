@@ -25,7 +25,6 @@ export function Badge({ children, variant = 'green', className = '' }: BadgeProp
 export function CashbackBadge({ percent }: { percent: number }) {
   return (
     <div className="flex items-center gap-1 text-sm">
-      <span className="text-deep-blue font-bold">€</span>
       <span className="font-bold text-deep-blue">{percent}%</span>
     </div>
   );

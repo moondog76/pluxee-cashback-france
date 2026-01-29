@@ -34,10 +34,7 @@ export default function CategorySection({ categoryId, categoryName }: CategorySe
                   />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-deep-blue mb-1">{merchant.name}</h4>
-                  <p className="text-xs text-gray-500 mb-2">
-                    Min. purchase {merchant.minPurchase} {merchant.currency}
-                  </p>
+                  <h4 className="font-bold text-deep-blue mb-2">{merchant.name}</h4>
                   <div className="flex items-center gap-2">
                     <CashbackBadge percent={merchant.cashbackPercent} />
                   </div>
