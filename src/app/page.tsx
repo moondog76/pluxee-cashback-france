@@ -1,48 +1,96 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import PageContainer from '@/components/layout/PageContainer';
 import HeroBanner from '@/components/home/HeroBanner';
-import OfferCard from '@/components/home/OfferCard';
+import HorizontalOfferCard from '@/components/home/HorizontalOfferCard';
 import { offers } from '@/data/offers';
 
 export default function HomePage() {
-  const featuredOffers = offers.filter((offer) => offer.featured);
-  const newOffers = offers.slice(0, 4);
-  const trendingOffers = offers.slice(2, 6);
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+
+  const handleToggleFavorite = (merchantId: string) => {
+    const newFavorites = favorites.includes(merchantId)
+      ? favorites.filter((id) => id !== merchantId)
+      : [...favorites, merchantId];
+
+    setFavorites(newFavorites);
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+  };
+
+  const favoriteOffers = offers.filter((offer) => favorites.includes(offer.merchantId));
+  const newOffers = offers.slice(0, 10);
+  const trendingOffers = offers.slice(5, 15);
 
   return (
     <PageContainer>
-      <div className="p-4">
-        <h1 className="text-2xl font-bold text-deep-blue mb-4">Pluxee</h1>
+      <div className="pb-4">
+        <div className="px-4">
+          <h1 className="text-2xl font-bold text-deep-blue mb-4">Pluxee</h1>
+          <HeroBanner />
+        </div>
 
-        <HeroBanner />
+        {favoriteOffers.length > 0 && (
+          <section className="mb-6">
+            <h2 className="text-lg font-semibold text-deep-blue mb-3 px-4">
+              Favorites ({favoriteOffers.length})
+            </h2>
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
+              {favoriteOffers.map((offer) => (
+                <HorizontalOfferCard
+                  key={offer.id}
+                  merchantId={offer.merchantId}
+                  title={offer.title}
+                  isFavorite={true}
+                  onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mb-6">
-          <h2 className="text-lg font-semibold text-deep-blue mb-3">Favorites</h2>
-          <div className="space-y-3">
-            {featuredOffers.slice(0, 2).map((offer) => (
-              <OfferCard key={offer.id} merchantId={offer.merchantId} title={offer.title} />
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-6">
-          <h2 className="text-lg font-semibold text-deep-blue mb-3">New For You</h2>
-          <div className="space-y-3">
+          <h2 className="text-lg font-semibold text-deep-blue mb-3 px-4">
+            New For You ({newOffers.length})
+          </h2>
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
             {newOffers.map((offer) => (
-              <OfferCard key={offer.id} merchantId={offer.merchantId} title={offer.title} />
+              <HorizontalOfferCard
+                key={offer.id}
+                merchantId={offer.merchantId}
+                title={offer.title}
+                isFavorite={favorites.includes(offer.merchantId)}
+                onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
+              />
             ))}
           </div>
         </section>
 
         <section className="mb-6">
-          <div className="flex justify-between items-center mb-3">
-            <h2 className="text-lg font-semibold text-deep-blue">Trending</h2>
+          <div className="flex justify-between items-center mb-3 px-4">
+            <h2 className="text-lg font-semibold text-deep-blue">
+              Trending ({trendingOffers.length})
+            </h2>
             <a href="/discover" className="text-sm text-ultra-green font-medium">
               View All
             </a>
           </div>
-          <div className="space-y-3">
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
             {trendingOffers.map((offer) => (
-              <OfferCard key={offer.id} merchantId={offer.merchantId} title={offer.title} />
+              <HorizontalOfferCard
+                key={offer.id}
+                merchantId={offer.merchantId}
+                title={offer.title}
+                isFavorite={favorites.includes(offer.merchantId)}
+                onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
+              />
             ))}
           </div>
         </section>
