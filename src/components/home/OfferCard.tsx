@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { merchants } from '@/data/merchants';
 import { categories } from '@/data/categories';
-import { CashbackBadge, FastCashbackPill } from '@/components/ui/Badge';
+import { CashbackBadge } from '@/components/ui/Badge';
 import { useState } from 'react';
 
 interface OfferCardProps {
@@ -62,7 +62,6 @@ export default function OfferCard({ merchantId, title }: OfferCardProps) {
 
             <div className="flex items-center gap-2">
               <CashbackBadge percent={merchant.cashbackPercent} />
-              {merchant.fastCashback && <FastCashbackPill />}
             </div>
           </div>
         </div>

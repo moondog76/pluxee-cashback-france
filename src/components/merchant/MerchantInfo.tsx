@@ -1,6 +1,5 @@
 import { Merchant } from '@/data/merchants';
 import { categories } from '@/data/categories';
-import { FastCashbackPill } from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 
 interface MerchantInfoProps {
@@ -30,12 +29,6 @@ export default function MerchantInfo({ merchant }: MerchantInfoProps) {
           <div className="text-2xl font-bold text-deep-blue">{merchant.cashbackPercent}%</div>
         </div>
       </div>
-
-      {merchant.fastCashback && (
-        <div className="mb-4">
-          <FastCashbackPill />
-        </div>
-      )}
 
       <p className="text-gray-700 mb-6">{merchant.description}</p>
 
