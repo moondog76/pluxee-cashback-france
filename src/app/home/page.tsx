@@ -31,17 +31,17 @@ export default function CashbackHomePage() {
 
   const favoriteOffers = offers.filter((offer) => favorites.includes(offer.merchantId));
 
-  // Top Brands: Carrefour, Monoprix, Auchan, Leclerc, Fnac, Decathlon
-  const topBrandIds = ['carrefour', 'monoprix', 'auchan', 'leclerc', 'fnac', 'decathlon'];
+  // Top Brands: Carrefour, Monoprix, Auchan, Leclerc, Picard, Franprix
+  const topBrandIds = ['carrefour', 'monoprix', 'auchan', 'leclerc', 'picard', 'franprix'];
   const topBrandOffers = offers.filter((offer) => topBrandIds.includes(offer.merchantId));
 
   // Time for Lunch: PAUL, Flunch, Bistro Régent, McDonald's, Starbucks, Boulangerie Louise
-  const lunchIds = ['paul', 'flunch', 'bistro-regent', 'mcdonalds', 'starbucks', 'louise'];
+  const lunchIds = ['paul', 'flunch', 'bistro-regent', 'mcdonalds', 'starbucks', 'boulangerie-louise'];
   const lunchOffers = offers.filter((offer) => lunchIds.includes(offer.merchantId));
 
-  // Online: Sephora, Zara, H&M, Fnac, Decathlon
-  const onlineIds = ['sephora', 'zara', 'hm', 'fnac', 'decathlon'];
-  const onlineOffers = offers.filter((offer) => onlineIds.includes(offer.merchantId));
+  // Restaurants: New restaurant partners
+  const restaurantIds = ['leon', 'buffalo-grill', 'hippopotamus', 'del-arte', 'courtepaille'];
+  const restaurantOffers = offers.filter((offer) => restaurantIds.includes(offer.merchantId));
 
   // Trending: mix of all merchants
   const trendingOffers = offers.slice(5, 15);
@@ -160,13 +160,13 @@ export default function CashbackHomePage() {
           </div>
         </section>
 
-        {/* Online */}
+        {/* Restaurants */}
         <section className="mb-6">
           <h2 className="text-lg font-semibold text-deep-blue mb-3 px-4">
-            Online <span className="text-gray-500">({onlineOffers.length})</span>
+            Restaurants <span className="text-gray-500">({restaurantOffers.length})</span>
           </h2>
           <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
-            {onlineOffers.map((offer) => (
+            {restaurantOffers.map((offer) => (
               <HorizontalOfferCard
                 key={offer.id}
                 merchantId={offer.merchantId}

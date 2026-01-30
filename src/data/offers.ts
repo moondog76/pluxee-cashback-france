@@ -68,26 +68,26 @@ export const offers: Offer[] = [
   },
   {
     id: 'offer-11',
-    merchantId: 'decathlon',
-    title: 'Sports Equipment',
+    merchantId: 'leon',
+    title: 'Mussels & Belgian Beer',
     featured: true,
   },
   {
     id: 'offer-12',
-    merchantId: 'sephora',
-    title: 'Beauty Essentials',
+    merchantId: 'buffalo-grill',
+    title: 'Grilled Steaks',
     featured: true,
   },
   {
     id: 'offer-13',
-    merchantId: 'fnac',
-    title: 'Tech & Entertainment',
+    merchantId: 'hippopotamus',
+    title: 'French Steakhouse',
     featured: false,
   },
   {
     id: 'offer-14',
-    merchantId: 'darty',
-    title: 'Home Appliances',
+    merchantId: 'del-arte',
+    title: 'Italian Favorites',
     featured: false,
   },
   {
@@ -116,14 +116,14 @@ export const offers: Offer[] = [
   },
   {
     id: 'offer-19',
-    merchantId: 'la-poste',
-    title: 'Postal Services',
+    merchantId: 'courtepaille',
+    title: 'Grilled Over Wood Fire',
     featured: false,
   },
   {
     id: 'offer-20',
-    merchantId: 'total-energies',
-    title: 'Fuel Savings',
+    merchantId: 'leon',
+    title: 'Belgian Classics',
     featured: false,
   },
 ];
