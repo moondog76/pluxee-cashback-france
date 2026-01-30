@@ -55,8 +55,6 @@ export default function HorizontalOfferCard({
               <MerchantLogo
                 merchantId={merchant.id}
                 merchantName={merchant.name}
-                size="sm"
-                className="shadow-md"
               />
             </div>
           </div>

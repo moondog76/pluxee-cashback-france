@@ -38,8 +38,6 @@ export default function OfferCard({ merchantId, title }: OfferCardProps) {
               <MerchantLogo
                 merchantId={merchant.id}
                 merchantName={merchant.name}
-                size="sm"
-                className="shadow-md"
               />
             </div>
           </div>
