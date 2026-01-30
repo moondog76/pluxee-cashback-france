@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight, X, Utensils, Gift } from 'lucide-react';
 import BottomNav from '@/components/layout/BottomNav';
 import HorizontalOfferCard from '@/components/home/HorizontalOfferCard';
 import { offers } from '@/data/offers';
@@ -50,14 +50,20 @@ export default function DashboardPage() {
         <section className="mb-8">
           <h2 className="text-lg font-semibold text-deep-blue mb-4">Your cards</h2>
           <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-            {/* Gusto Card */}
+            {/* Meal Card */}
             <div className="bg-ultra-green rounded-xl p-4 min-w-[280px] flex-shrink-0">
-              <p className="text-deep-blue text-sm mb-1">Gusto Card</p>
+              <div className="flex items-center gap-2 mb-1">
+                <Utensils className="w-4 h-4 text-deep-blue" />
+                <p className="text-deep-blue text-sm">Meal Card</p>
+              </div>
               <p className="text-deep-blue text-3xl font-bold">EUR 71.04</p>
             </div>
-            {/* Cultura Card */}
+            {/* Gift Card */}
             <div className="bg-ultra-green rounded-xl p-4 min-w-[280px] flex-shrink-0">
-              <p className="text-deep-blue text-sm mb-1">Cultura Card</p>
+              <div className="flex items-center gap-2 mb-1">
+                <Gift className="w-4 h-4 text-deep-blue" />
+                <p className="text-deep-blue text-sm">Gift Card</p>
+              </div>
               <p className="text-deep-blue text-3xl font-bold">EUR 24.50</p>
             </div>
           </div>

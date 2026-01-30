@@ -1,16 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowLeft, Menu, MapPin, Wallet } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import PageContainer from '@/components/layout/PageContainer';
 import HeroBanner from '@/components/home/HeroBanner';
 import HorizontalOfferCard from '@/components/home/HorizontalOfferCard';
 import { offers } from '@/data/offers';
-import { merchants } from '@/data/merchants';
 
 export default function CashbackHomePage() {
+  const router = useRouter();
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
@@ -48,13 +49,56 @@ export default function CashbackHomePage() {
   return (
     <PageContainer>
       <div className="pb-4">
-        {/* Header with Back Button */}
-        <div className="px-4 py-3 flex items-center gap-3">
-          <Link href="/">
-            <ArrowLeft className="w-6 h-6 text-deep-blue" />
-          </Link>
-          <h1 className="text-2xl font-bold text-deep-blue">Cashback</h1>
-        </div>
+        {/* Header with Back Button and Hamburger Menu */}
+        <header className="px-4 py-3 flex items-center justify-between border-b border-gray-100">
+          <div className="flex items-center gap-3">
+            <button onClick={() => router.push('/')}>
+              <ArrowLeft className="w-6 h-6 text-deep-blue" />
+            </button>
+            <h1 className="text-xl font-bold text-deep-blue">Cashback</h1>
+          </div>
+
+          {/* Hamburger Menu */}
+          <div className="relative">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              <Menu className="w-6 h-6 text-deep-blue" />
+            </button>
+
+            {menuOpen && (
+              <>
+                {/* Backdrop */}
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setMenuOpen(false)}
+                />
+
+                {/* Menu dropdown */}
+                <div className="absolute right-0 top-10 bg-white rounded-xl shadow-lg border z-50 min-w-[200px] py-2">
+                  <button
+                    onClick={() => {
+                      router.push('/map');
+                      setMenuOpen(false);
+                    }}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50"
+                  >
+                    <MapPin className="w-5 h-5 text-ultra-green" />
+                    <span className="text-deep-blue font-medium">Store Finder</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      router.push('/cashback');
+                      setMenuOpen(false);
+                    }}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50"
+                  >
+                    <Wallet className="w-5 h-5 text-ultra-green" />
+                    <span className="text-deep-blue font-medium">My Cashback</span>
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </header>
 
         <div className="px-4">
           <HeroBanner />
