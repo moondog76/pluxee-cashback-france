@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 interface MerchantLogoProps {
   merchantId: string;
@@ -9,30 +9,32 @@ interface MerchantLogoProps {
   className?: string;
 }
 
-// Logo URLs from Wikimedia Commons (public domain / free license)
-// Using PNG versions where available for better compatibility
-const logoUrls: Record<string, string> = {
-  'carrefour': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Carrefour_logo.svg/200px-Carrefour_logo.svg.png',
-  'monoprix': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Monoprix_logo_2013.png/200px-Monoprix_logo_2013.png',
-  'picard': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Picard_Surgel%C3%A9s_logo.svg/200px-Picard_Surgel%C3%A9s_logo.svg.png',
-  'paul': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Paul_%28restaurant%29_logo.svg/200px-Paul_%28restaurant%29_logo.svg.png',
-  'flunch': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Flunch_logo.svg/200px-Flunch_logo.svg.png',
-  'starbucks': 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/200px-Starbucks_Corporation_Logo_2011.svg.png',
-  'mcdonalds': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/200px-McDonald%27s_Golden_Arches.svg.png',
-  'auchan': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Auchan_%28logo%29.svg/200px-Auchan_%28logo%29.svg.png',
-  'leclerc': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Logo_E.Leclerc_Sans_le_texte.svg/200px-Logo_E.Leclerc_Sans_le_texte.svg.png',
-  'franprix': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Franprix_logo_2013.png/200px-Franprix_logo_2013.png',
-  'buffalo-grill': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Buffalo_Grill_logo.svg/200px-Buffalo_Grill_logo.svg.png',
-  'hippopotamus': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Logo_Hippopotamus.svg/200px-Logo_Hippopotamus.svg.png',
-};
+// Brand colors and styling for each merchant
+const brandStyles: Record<string, { text: string; bgColor: string; textColor: string }> = {
+  // Groceries
+  'carrefour': { text: 'C', bgColor: '#004E9A', textColor: '#FFFFFF' },
+  'monoprix': { text: 'M', bgColor: '#E4002B', textColor: '#FFFFFF' },
+  'auchan': { text: 'A', bgColor: '#E30613', textColor: '#FFFFFF' },
+  'leclerc': { text: 'E', bgColor: '#0066B2', textColor: '#FFFFFF' },
+  'picard': { text: 'P', bgColor: '#00A3E0', textColor: '#FFFFFF' },
+  'franprix': { text: 'F', bgColor: '#E30613', textColor: '#FFFFFF' },
 
-// Text-based logos with brand colors for merchants without public logo URLs
-const textLogos: Record<string, { text: string; bgColor: string; textColor: string }> = {
+  // Bakery
+  'paul': { text: 'P', bgColor: '#1A1A1A', textColor: '#C9A962' },
   'boulangerie-louise': { text: 'BL', bgColor: '#8B4513', textColor: '#FFFFFF' },
+
+  // Restaurants
+  'flunch': { text: 'F', bgColor: '#E94E1B', textColor: '#FFFFFF' },
   'bistro-regent': { text: 'BR', bgColor: '#1E3A5F', textColor: '#FFFFFF' },
-  'leon': { text: 'LB', bgColor: '#D4AF37', textColor: '#1A1A1A' },
+  'leon': { text: 'L', bgColor: '#D4AF37', textColor: '#1A1A1A' },
+  'buffalo-grill': { text: 'BG', bgColor: '#8B0000', textColor: '#FFFFFF' },
+  'hippopotamus': { text: 'H', bgColor: '#006400', textColor: '#FFFFFF' },
   'del-arte': { text: 'DA', bgColor: '#006847', textColor: '#FFFFFF' },
-  'courtepaille': { text: 'CP', bgColor: '#8B0000', textColor: '#FFFFFF' },
+  'courtepaille': { text: 'CP', bgColor: '#D2691E', textColor: '#FFFFFF' },
+  'mcdonalds': { text: 'M', bgColor: '#FFC72C', textColor: '#DA291C' },
+
+  // Cafes
+  'starbucks': { text: 'S', bgColor: '#00704A', textColor: '#FFFFFF' },
 };
 
 export default function MerchantLogo({
@@ -41,8 +43,6 @@ export default function MerchantLogo({
   size = 'md',
   className = ''
 }: MerchantLogoProps) {
-  const [imageError, setImageError] = useState(false);
-
   const sizeClasses = {
     sm: 'w-8 h-8',
     md: 'w-12 h-12',
@@ -52,35 +52,18 @@ export default function MerchantLogo({
   const textSizeClasses = {
     sm: 'text-xs',
     md: 'text-sm',
-    lg: 'text-base',
+    lg: 'text-lg',
   };
 
-  const logoUrl = logoUrls[merchantId];
-  const textLogo = textLogos[merchantId];
+  const brandStyle = brandStyles[merchantId];
 
-  // If we have a logo URL and no error, show the image
-  if (logoUrl && !imageError) {
-    return (
-      <div className={`${sizeClasses[size]} relative rounded-lg overflow-hidden bg-white flex items-center justify-center ${className}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={logoUrl}
-          alt={`${merchantName} logo`}
-          className="w-full h-full object-contain p-1"
-          onError={() => setImageError(true)}
-        />
-      </div>
-    );
-  }
-
-  // If we have a text-based logo config, use it
-  if (textLogo) {
+  if (brandStyle) {
     return (
       <div
         className={`${sizeClasses[size]} rounded-lg flex items-center justify-center font-bold ${textSizeClasses[size]} ${className}`}
-        style={{ backgroundColor: textLogo.bgColor, color: textLogo.textColor }}
+        style={{ backgroundColor: brandStyle.bgColor, color: brandStyle.textColor }}
       >
-        {textLogo.text}
+        {brandStyle.text}
       </div>
     );
   }
