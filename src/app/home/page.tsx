@@ -76,7 +76,7 @@ export default function CashbackHomePage() {
                 <div className="absolute right-0 top-10 bg-white rounded-xl shadow-lg border z-50 min-w-[200px] py-2">
                   <button
                     onClick={() => {
-                      router.push('/map');
+                      router.push('/discover');
                       setMenuOpen(false);
                     }}
                     className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50"
