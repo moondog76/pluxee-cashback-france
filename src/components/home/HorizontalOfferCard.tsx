@@ -6,6 +6,7 @@ import { Heart } from 'lucide-react';
 import { merchants } from '@/data/merchants';
 import { categories } from '@/data/categories';
 import { CashbackBadge } from '@/components/ui/Badge';
+import MerchantLogo from '@/components/MerchantLogo';
 
 interface HorizontalOfferCardProps {
   merchantId: string;
@@ -50,10 +51,13 @@ export default function HorizontalOfferCard({
               fill
               className="object-cover"
             />
-            <div className="absolute bottom-2 left-2 bg-white/80 backdrop-blur-sm p-2 rounded-lg">
-              <span className="text-xs font-bold text-deep-blue">
-                {merchant.name.substring(0, 2).toUpperCase()}
-              </span>
+            <div className="absolute bottom-2 left-2">
+              <MerchantLogo
+                merchantId={merchant.id}
+                merchantName={merchant.name}
+                size="sm"
+                className="shadow-md"
+              />
             </div>
           </div>
 
