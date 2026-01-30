@@ -104,14 +104,14 @@ export const offers: Offer[] = [
   },
   {
     id: 'offer-17',
-    merchantId: 'zara',
-    title: 'Latest Fashion Trends',
+    merchantId: 'buffalo-grill',
+    title: 'Steak Night',
     featured: true,
   },
   {
     id: 'offer-18',
-    merchantId: 'hm',
-    title: 'Affordable Style',
+    merchantId: 'del-arte',
+    title: 'Pizza & Pasta',
     featured: false,
   },
   {

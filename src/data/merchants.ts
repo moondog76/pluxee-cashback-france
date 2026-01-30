@@ -293,36 +293,4 @@ export const merchants: Merchant[] = [
       { lat: 48.8656, lng: 2.3075, address: '33 Avenue de l\'Opéra, 75002 Paris' },
     ]
   },
-  {
-    id: 'zara',
-    name: 'Zara',
-    category: 'fashion',
-    cashbackPercent: 14,
-    logo: '/logos/zara.svg',
-    heroImage: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800',
-    description: 'Shop at Zara and get 14% cashback on fashion.',
-    minPurchase: 30,
-    currency: 'EUR',
-    about: 'Zara offers the latest fashion trends for women, men and children with new collections every week.',
-    availability: 'Valid at all Zara stores',
-    locations: [
-      { lat: 48.8698, lng: 2.3075, address: '44 Avenue des Champs-Élysées, 75008 Paris' },
-    ]
-  },
-  {
-    id: 'hm',
-    name: 'H&M',
-    category: 'fashion',
-    cashbackPercent: 12,
-    logo: '/logos/hm.svg',
-    heroImage: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800',
-    description: 'Earn 12% cashback on H&M fashion and accessories.',
-    minPurchase: 25,
-    currency: 'EUR',
-    about: 'H&M offers fashion and quality at the best price in a sustainable way for women, men, teenagers and children.',
-    availability: 'At all H&M stores nationwide',
-    locations: [
-      { lat: 48.8670, lng: 2.3210, address: '120 Rue de Rivoli, 75001 Paris' },
-    ]
-  },
 ];
