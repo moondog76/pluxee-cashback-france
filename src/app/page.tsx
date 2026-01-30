@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import PageContainer from '@/components/layout/PageContainer';
-import HeroBanner from '@/components/home/HeroBanner';
+import Link from 'next/link';
+import { ChevronRight, X } from 'lucide-react';
+import BottomNav from '@/components/layout/BottomNav';
 import HorizontalOfferCard from '@/components/home/HorizontalOfferCard';
 import { offers } from '@/data/offers';
+import { useState, useEffect } from 'react';
 
-export default function HomePage() {
+export default function DashboardPage() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
@@ -25,43 +26,57 @@ export default function HomePage() {
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
-  const favoriteOffers = offers.filter((offer) => favorites.includes(offer.merchantId));
-  const newOffers = offers.slice(0, 10);
-  const trendingOffers = offers.slice(5, 15);
+  // Featured cashback offers for dashboard
+  const featuredOffers = offers.slice(0, 8);
 
   return (
-    <PageContainer>
-      <div className="pb-4">
-        <div className="px-4">
-          <h1 className="text-2xl font-bold text-deep-blue mb-4">Pluxee</h1>
-          <HeroBanner />
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Deep Blue Header */}
+      <header className="bg-deep-blue p-6">
+        <div className="flex items-center justify-between mb-4">
+          {/* Pluxee X-mark logo */}
+          <div className="bg-ultra-green rounded-full w-10 h-10 flex items-center justify-center">
+            <X className="w-6 h-6 text-deep-blue" />
+          </div>
         </div>
+        <div>
+          <p className="text-white/70 text-sm">Welcome back</p>
+          <h1 className="text-white text-2xl font-bold">Marie</h1>
+        </div>
+      </header>
 
-        {favoriteOffers.length > 0 && (
-          <section className="mb-6">
-            <h2 className="text-lg font-semibold text-deep-blue mb-3 px-4">
-              Favorites ({favoriteOffers.length})
-            </h2>
-            <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
-              {favoriteOffers.map((offer) => (
-                <HorizontalOfferCard
-                  key={offer.id}
-                  merchantId={offer.merchantId}
-                  title={offer.title}
-                  isFavorite={true}
-                  onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
-                />
-              ))}
+      <div className="px-4 py-6">
+        {/* Your Cards Section */}
+        <section className="mb-8">
+          <h2 className="text-lg font-semibold text-deep-blue mb-4">Your cards</h2>
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide">
+            {/* Gusto Card */}
+            <div className="bg-ultra-green rounded-xl p-4 min-w-[280px] flex-shrink-0">
+              <p className="text-deep-blue text-sm mb-1">Gusto Card</p>
+              <p className="text-deep-blue text-3xl font-bold">EUR 71.04</p>
             </div>
-          </section>
-        )}
+            {/* Cultura Card */}
+            <div className="bg-ultra-green rounded-xl p-4 min-w-[280px] flex-shrink-0">
+              <p className="text-deep-blue text-sm mb-1">Cultura Card</p>
+              <p className="text-deep-blue text-3xl font-bold">EUR 24.50</p>
+            </div>
+          </div>
+        </section>
 
-        <section className="mb-6">
-          <h2 className="text-lg font-semibold text-deep-blue mb-3 px-4">
-            New For You ({newOffers.length})
-          </h2>
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
-            {newOffers.map((offer) => (
+        {/* Cashback Section */}
+        <section className="mb-8">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="text-lg font-semibold text-deep-blue">Cashback</h2>
+            <Link href="/home" className="text-sm text-ultra-green font-medium flex items-center gap-1">
+              See all
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <p className="text-sm text-gray-600 mb-4">
+            Find the latest cashback offers from your favorite merchants
+          </p>
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide">
+            {featuredOffers.map((offer) => (
               <HorizontalOfferCard
                 key={offer.id}
                 merchantId={offer.merchantId}
@@ -73,28 +88,42 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mb-6">
-          <div className="flex justify-between items-center mb-3 px-4">
-            <h2 className="text-lg font-semibold text-deep-blue">
-              Trending ({trendingOffers.length})
-            </h2>
-            <a href="/discover" className="text-sm text-ultra-green font-medium">
-              View All
-            </a>
-          </div>
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4">
-            {trendingOffers.map((offer) => (
-              <HorizontalOfferCard
-                key={offer.id}
-                merchantId={offer.merchantId}
-                title={offer.title}
-                isFavorite={favorites.includes(offer.merchantId)}
-                onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
-              />
-            ))}
+        {/* What's New Section */}
+        <section className="mb-8">
+          <h2 className="text-lg font-semibold text-deep-blue mb-2">What&apos;s new?</h2>
+          <p className="text-sm text-gray-600 mb-4">Find the latest information!</p>
+
+          {/* News/Promo Cards - Placeholders */}
+          <div className="space-y-3">
+            <div className="bg-white rounded-xl p-4 shadow-sm">
+              <div className="flex gap-3">
+                <div className="w-16 h-16 bg-boldly-blue rounded-lg flex-shrink-0"></div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-deep-blue mb-1">New Merchants Added!</h3>
+                  <p className="text-sm text-gray-600">
+                    Discover cashback offers from 12 new partner merchants
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-4 shadow-sm">
+              <div className="flex gap-3">
+                <div className="w-16 h-16 bg-very-yellow rounded-lg flex-shrink-0"></div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-deep-blue mb-1">Earn Up to 25% Cashback</h3>
+                  <p className="text-sm text-gray-600">
+                    Check out our highest cashback offers this month
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
-    </PageContainer>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
+    </div>
   );
 }

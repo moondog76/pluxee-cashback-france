@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Search, Receipt, User } from 'lucide-react';
+import { LayoutGrid, CreditCard, Store, Star, User } from 'lucide-react';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/discover', label: 'Discover', icon: Search },
-  { href: '/cashback', label: 'Cashback', icon: Receipt },
-  { href: '/profile', label: 'Profile', icon: User },
+  { href: '/', label: 'Dashboard', icon: LayoutGrid },
+  { href: '/cards', label: 'Cards', icon: CreditCard },
+  { href: '/stores', label: 'Stores', icon: Store },
+  { href: '/home', label: 'Cashback', icon: Star },
+  { href: '/profile', label: 'Account', icon: User },
 ];
 
 export default function BottomNav() {
