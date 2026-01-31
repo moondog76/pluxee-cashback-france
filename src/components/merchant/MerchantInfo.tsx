@@ -1,3 +1,5 @@
+'use client';
+
 import { Merchant } from '@/data/merchants';
 import { categories } from '@/data/categories';
 import { MapPin, Navigation } from 'lucide-react';
