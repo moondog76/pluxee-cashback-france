@@ -97,7 +97,7 @@ export default function CashbackHomePage() {
                     className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50"
                   >
                     <Settings className="w-5 h-5 text-ultra-green" />
-                    <span className="text-deep-blue font-medium">Cashback Settings</span>
+                    <span className="text-deep-blue font-medium">Settings</span>
                   </button>
                 </div>
               </>
