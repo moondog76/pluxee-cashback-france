@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import PageContainer from '@/components/layout/PageContainer';
 import SearchBar from '@/components/discover/SearchBar';
 import FilterPills from '@/components/discover/FilterPills';
@@ -12,6 +14,7 @@ import { offers } from '@/data/offers';
 import { getClosestLocation } from '@/lib/distance';
 
 export default function DiscoverPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [nearMeActive, setNearMeActive] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lon: number } | null>(null);
@@ -78,8 +81,15 @@ export default function DiscoverPage() {
 
   return (
     <PageContainer>
+      {/* Header with X close button */}
+      <header className="bg-white px-4 py-3 flex items-center justify-between border-b border-gray-100">
+        <h1 className="text-xl font-bold text-deep-blue">Store Finder</h1>
+        <button onClick={() => router.push('/home')}>
+          <X className="w-6 h-6 text-deep-blue" />
+        </button>
+      </header>
+
       <div className="p-4">
-        <h1 className="text-2xl font-bold text-deep-blue mb-4">Discover</h1>
 
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
         <FilterPills

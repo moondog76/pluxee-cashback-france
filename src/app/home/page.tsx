@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Menu, MapPin, Wallet } from 'lucide-react';
+import { Menu, MapPin, Wallet, Settings } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import PageContainer from '@/components/layout/PageContainer';
 import HeroBanner from '@/components/home/HeroBanner';
@@ -49,14 +49,9 @@ export default function CashbackHomePage() {
   return (
     <PageContainer>
       <div className="pb-4">
-        {/* Header with Back Button and Hamburger Menu */}
+        {/* Header with Hamburger Menu */}
         <header className="px-4 py-3 flex items-center justify-between border-b border-gray-100">
-          <div className="flex items-center gap-3">
-            <button onClick={() => router.push('/')}>
-              <ArrowLeft className="w-6 h-6 text-deep-blue" />
-            </button>
-            <h1 className="text-xl font-bold text-deep-blue">Cashback</h1>
-          </div>
+          <h1 className="text-xl font-bold text-deep-blue">Cashback</h1>
 
           {/* Hamburger Menu */}
           <div className="relative">
@@ -93,6 +88,16 @@ export default function CashbackHomePage() {
                   >
                     <Wallet className="w-5 h-5 text-ultra-green" />
                     <span className="text-deep-blue font-medium">My Cashback</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      router.push('/cashback/settings');
+                      setMenuOpen(false);
+                    }}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50"
+                  >
+                    <Settings className="w-5 h-5 text-ultra-green" />
+                    <span className="text-deep-blue font-medium">Cashback Settings</span>
                   </button>
                 </div>
               </>

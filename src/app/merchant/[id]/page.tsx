@@ -19,7 +19,7 @@ export default async function MerchantPage({
 
   return (
     <PageContainer>
-      <Header showBack backHref="/" />
+      <Header showBack backHref="/home" />
       <MerchantHero merchant={merchant} />
       <MerchantInfo merchant={merchant} />
     </PageContainer>

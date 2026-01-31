@@ -1,8 +1,13 @@
+'use client';
+
+import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import PageContainer from '@/components/layout/PageContainer';
 import { mockCashbackHistory } from '@/data/cashbackHistory';
 import { merchants } from '@/data/merchants';
 
 export default function CashbackPage() {
+  const router = useRouter();
   const totalPaid = mockCashbackHistory
     .filter((t) => t.status === 'paid')
     .reduce((sum, t) => sum + t.cashbackAmount, 0);
@@ -31,8 +36,15 @@ export default function CashbackPage() {
 
   return (
     <PageContainer>
+      {/* Header with X close button */}
+      <header className="bg-white px-4 py-3 flex items-center justify-between border-b border-gray-100">
+        <h1 className="text-xl font-bold text-deep-blue">My Cashback</h1>
+        <button onClick={() => router.push('/home')}>
+          <X className="w-6 h-6 text-deep-blue" />
+        </button>
+      </header>
+
       <div className="p-4">
-        <h1 className="text-2xl font-bold text-deep-blue mb-6">Cashback</h1>
 
         {/* Summary Cards */}
         <div className="grid grid-cols-2 gap-4 mb-6">

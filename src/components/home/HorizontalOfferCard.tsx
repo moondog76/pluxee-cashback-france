@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
+import { Heart, MapPin } from 'lucide-react';
 import { merchants } from '@/data/merchants';
 import { categories } from '@/data/categories';
 import { CashbackBadge } from '@/components/ui/Badge';
@@ -72,6 +72,36 @@ export default function HorizontalOfferCard({
 
             <div className="flex items-center justify-between">
               <CashbackBadge percent={merchant.cashbackPercent} />
+            </div>
+
+            {/* Minimum purchase condition */}
+            <p className="text-xs text-gray-500 mt-1">
+              Shop from €{merchant.minPurchase}
+            </p>
+          </div>
+
+          {/* Mini Map Preview */}
+          <div className="relative h-16 bg-gray-100 overflow-hidden rounded-b-xl">
+            {/* Map background pattern */}
+            <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 50" preserveAspectRatio="none">
+              <pattern id={`grid-${merchant.id}`} width="10" height="10" patternUnits="userSpaceOnUse">
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#9CA3AF" strokeWidth="0.5"/>
+              </pattern>
+              <rect width="100" height="50" fill={`url(#grid-${merchant.id})`}/>
+              {/* Roads */}
+              <line x1="0" y1="25" x2="100" y2="25" stroke="#D1D5DB" strokeWidth="2"/>
+              <line x1="50" y1="0" x2="50" y2="50" stroke="#D1D5DB" strokeWidth="2"/>
+              <line x1="20" y1="0" x2="80" y2="50" stroke="#E5E7EB" strokeWidth="1"/>
+            </svg>
+            {/* Location pin */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-ultra-green rounded-full p-1.5 shadow-md">
+                <MapPin className="w-4 h-4 text-deep-blue" fill="#00EB5E" />
+              </div>
+            </div>
+            {/* Distance indicator */}
+            <div className="absolute bottom-1 right-2 bg-white/90 rounded px-1.5 py-0.5">
+              <span className="text-[10px] text-gray-600">{merchant.locations.length} location{merchant.locations.length > 1 ? 's' : ''}</span>
             </div>
           </div>
         </div>

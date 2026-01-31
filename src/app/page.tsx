@@ -1,34 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { ChevronRight, X, Utensils, Gift } from 'lucide-react';
+import { X, Utensils, Gift } from 'lucide-react';
 import BottomNav from '@/components/layout/BottomNav';
-import HorizontalOfferCard from '@/components/home/HorizontalOfferCard';
-import { offers } from '@/data/offers';
-import { useState, useEffect } from 'react';
 
 export default function DashboardPage() {
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem('favorites');
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
-  }, []);
-
-  const handleToggleFavorite = (merchantId: string) => {
-    const newFavorites = favorites.includes(merchantId)
-      ? favorites.filter((id) => id !== merchantId)
-      : [...favorites, merchantId];
-
-    setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
-  };
-
-  // Featured cashback offers for dashboard
-  const featuredOffers = offers.slice(0, 8);
-
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Deep Blue Header */}
@@ -66,31 +41,6 @@ export default function DashboardPage() {
               </div>
               <p className="text-deep-blue text-3xl font-bold">EUR 24.50</p>
             </div>
-          </div>
-        </section>
-
-        {/* Cashback Section */}
-        <section className="mb-8">
-          <div className="flex justify-between items-center mb-3">
-            <h2 className="text-lg font-semibold text-deep-blue">Cashback</h2>
-            <Link href="/home" className="text-sm text-ultra-green font-medium flex items-center gap-1">
-              See all
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <p className="text-sm text-gray-600 mb-4">
-            Find the latest cashback offers from your favorite merchants
-          </p>
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-            {featuredOffers.map((offer) => (
-              <HorizontalOfferCard
-                key={offer.id}
-                merchantId={offer.merchantId}
-                title={offer.title}
-                isFavorite={favorites.includes(offer.merchantId)}
-                onToggleFavorite={() => handleToggleFavorite(offer.merchantId)}
-              />
-            ))}
           </div>
         </section>
 
