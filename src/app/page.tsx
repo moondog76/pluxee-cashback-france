@@ -1,6 +1,7 @@
 'use client';
 
-import { X, Utensils, Gift } from 'lucide-react';
+import { Utensils, Gift } from 'lucide-react';
+import Image from 'next/image';
 import BottomNav from '@/components/layout/BottomNav';
 
 export default function DashboardPage() {
@@ -10,9 +11,13 @@ export default function DashboardPage() {
       <header className="bg-deep-blue p-6">
         <div className="flex items-center justify-between mb-4">
           {/* Pluxee X-mark logo */}
-          <div className="bg-ultra-green rounded-full w-10 h-10 flex items-center justify-center">
-            <X className="w-6 h-6 text-deep-blue" />
-          </div>
+          <Image
+            src="/X logo.png"
+            alt="Pluxee"
+            width={40}
+            height={40}
+            className="rounded-lg"
+          />
         </div>
         <div>
           <p className="text-white/70 text-sm">Welcome back</p>
